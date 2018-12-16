@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fullviewrelativelatout"
+    tools:context=".Activity.FullViewActivity">
+
+   <pl.droidsonroids.gif.GifImageView
+       android:layout_width="match_parent"
+       android:layout_height="300dp"
+       android:layout_margin="10dp"
+       android:scaleType="fitXY"
+       android:src="@drawable/drawerbg"
+       android:id="@+id/fullviewimage"
+       />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/fullviewimage"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <ImageView
+            android:background="@drawable/circlrbg"
+            android:layout_margin="15dp"
+            android:id="@+id/saveimage"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_save_black_24dp"/>
+        <ImageView
+            android:layout_margin="20dp"
+            android:background="@drawable/circlrbg"
+            android:id="@+id/shareimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_share_green_24dp"/>
+    </LinearLayout>
+
+</RelativeLayout>
