@@ -6,42 +6,40 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_newyear"
-            android:icon="@drawable/newyearparty"
-            android:title="Happy New Year" />
+            android:icon="@drawable/icon_new"
+            android:title="New Year " />
         <item
             android:id="@+id/nav_chrimstmas"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:icon="@drawable/chr1"
-            android:title="Happy Christmas Day" />
+            android:title="Marry Christmas" />
         <item
             android:id="@+id/nav_quotes"
-            android:icon="@drawable/quotes"
-            android:title="Quotes" />
+            android:icon="@drawable/icon_wish"
+            android:title="Wishes" />
         <item
             android:id="@+id/nav_shyari"
-            android:icon="@drawable/shyari"
-            android:title="Shyari" />
+            android:icon="@drawable/icon_sh"
+            android:title="Shayari" />
         <item
             android:id="@+id/nav_more_apps"
-            android:icon="@drawable/moreapps"
+            android:icon="@drawable/icon_playstore"
             android:title="More Apps" />
-        <item
-            android:id="@+id/nav_share"
-            android:icon="@drawable/ic_menu_share"
-            android:title="Share" />
+
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Communicate"
+        android:iconTint="#fff">
         <menu>
 
             <item
-                android:id="@+id/nav_facebook"
-                android:icon="@drawable/fb"
-                android:title="Facebook" />
+                android:id="@+id/nav_share"
+                android:icon="@drawable/icon_share"
+                android:title="Share" />
             <item
                 android:id="@+id/nav_youtube"
-                android:icon="@drawable/youtube"
+                android:icon="@drawable/icon_youtube"
                 android:title="Youtube" />
             <item
                 android:id="@+id/nav_version"

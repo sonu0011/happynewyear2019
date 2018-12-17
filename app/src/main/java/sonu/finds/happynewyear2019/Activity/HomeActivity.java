@@ -1,5 +1,7 @@
 package sonu.finds.happynewyear2019.Activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,7 +15,7 @@ import android.view.MenuItem;
 
 import sonu.finds.happynewyear2019.Fragments.ChristmasFragment;
 import sonu.finds.happynewyear2019.Fragments.NewYearFragment;
-import sonu.finds.happynewyear2019.Fragments.QuotesFragment;
+import sonu.finds.happynewyear2019.Fragments.WishesFragment;
 import sonu.finds.happynewyear2019.Fragments.ShyariFragment;
 import sonu.finds.happynewyear2019.R;
 
@@ -64,8 +66,9 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_rating) {
+            Intent rateIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" +getPackageName()));
+            startActivity(rateIntent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -78,28 +81,50 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_newyear) {
+            getSupportActionBar().setTitle("Happy New Year 2019");
+
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new NewYearFragment())
                     .commit();
         } else if (id == R.id.nav_chrimstmas) {
+            getSupportActionBar().setTitle("Happy Christmas Day");
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new ChristmasFragment())
                     .commit();
 
         } else if (id == R.id.nav_quotes) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new QuotesFragment())
+            getSupportActionBar().setTitle("Wishes");
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new WishesFragment())
                     .commit();
 
         } else if (id == R.id.nav_shyari) {
+            getSupportActionBar().setTitle("Shayari");
+
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new ShyariFragment())
                     .commit();
 
-        } else if (id == R.id.nav_share) {
+        }
+        else if (id == R.id.nav_share){
+            try {
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("text/plain");
+                i.putExtra(Intent.EXTRA_SUBJECT, "Happy New Year 2019");
+                String sAux = "\nDownload this app for New Year Images, Gif, Wishes and Shayari\n\n";
+                sAux = sAux + "https://play.google.com/store/apps/details?id="+getPackageName()+"";
+                i.putExtra(Intent.EXTRA_TEXT, sAux);
+                startActivity(Intent.createChooser(i, "choose one"));
+            } catch(Exception e) {
+                //e.toString();
+            }
 
-        } else if (id == R.id.nav_more_apps) {
+        }
+        else if (id == R.id.nav_more_apps) {
+            Intent rateIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/developer?id=Sonu+Finds"));
+            startActivity(rateIntent);
 
-        } else if (id == R.id.nav_facebook) {
-
-
-        } else if (id == R.id.nav_youtube) {
+        }  else if (id == R.id.nav_youtube) {
+            Intent intent4 = new Intent(Intent.ACTION_VIEW);
+            intent4.setData(Uri.parse("https://www.youtube.com/channel/UCNPqfWK6Cd4ksdrhkQB7B9w?view_as=subscriber"));
+            startActivity(intent4);
 
         }
 

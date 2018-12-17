@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7F000000"
+    tools:context=".Activity.FullTextViewActivity">
+
+    <TextView
+        android:id="@+id/setfulltext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:padding="30dp"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:text="रज की तरह चमकती रहे आपकी ज़िंदगी,
+और सितारों की तरह झिलमिलाये आप |
+इन्ही दुआओं के साथ, आपको नए साल की शुभकामनाये |"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_below="@+id/setfulltext"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <ImageView
+            android:background="@drawable/circlrbg"
+            android:layout_margin="15dp"
+            android:id="@+id/copytext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_content_copy_black_24dp"/>
+        <ImageView
+            android:layout_margin="15dp"
+            android:background="@drawable/circlrbg"
+            android:id="@+id/sharetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_share_green_24dp"/>
+    </LinearLayout>
+</RelativeLayout>

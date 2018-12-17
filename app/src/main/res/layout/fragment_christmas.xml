@@ -5,10 +5,29 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.ChristmasFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:id="@+id/newyear_tablayou"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IMAGES"
+            />
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GIF"
+            />
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/newyear_recycleview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="christmas" />
-
+        android:layout_marginTop="52dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"/>
 </FrameLayout>

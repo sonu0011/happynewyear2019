@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fullviewrelativelatout"
-    tools:context=".Activity.FullViewActivity">
+    tools:context=".Activity.FullImageViewActivity">
 
    <pl.droidsonroids.gif.GifImageView
        android:layout_width="match_parent"
