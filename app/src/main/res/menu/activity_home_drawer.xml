@@ -1,49 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_newyear"
+            android:checkable="false"
             android:icon="@drawable/icon_new"
             android:title="New Year " />
         <item
             android:id="@+id/nav_chrimstmas"
+
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:checkable="false"
             android:icon="@drawable/chr1"
             android:title="Marry Christmas" />
         <item
             android:id="@+id/nav_quotes"
+
+            android:checkable="false"
             android:icon="@drawable/icon_wish"
             android:title="Wishes" />
         <item
             android:id="@+id/nav_shyari"
+
+            android:checkable="false"
             android:icon="@drawable/icon_sh"
             android:title="Shayari" />
         <item
             android:id="@+id/nav_more_apps"
+
+            android:checkable="false"
             android:icon="@drawable/icon_playstore"
             android:title="More Apps" />
 
     </group>
 
-    <item android:title="Communicate"
-        android:iconTint="#fff">
+    <item android:title="Communicate">
         <menu>
 
             <item
                 android:id="@+id/nav_share"
+
+                android:checkable="false"
                 android:icon="@drawable/icon_share"
                 android:title="Share" />
             <item
                 android:id="@+id/nav_youtube"
+
+                android:checkable="false"
                 android:icon="@drawable/icon_youtube"
                 android:title="Youtube" />
             <item
                 android:id="@+id/nav_version"
-                android:title="                           1.0.0" />
+
+                android:checkable="false"
+                android:title=""
+                app:actionViewClass="android.widget.TextView" />
         </menu>
     </item>
 

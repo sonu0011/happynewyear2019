@@ -106,7 +106,7 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.ViewHolder
                     intent.putExtra("fulltext", list.get(getAdapterPosition()).getText());
                     context.startActivity(intent);
                 }
-                else {
+                if (i==0){
                     int imageid = list.get(getAdapterPosition()).getImage();
                     Intent intent = new Intent(context, FullImageViewActivity.class);
                     intent.putExtra("imageboolean",2);

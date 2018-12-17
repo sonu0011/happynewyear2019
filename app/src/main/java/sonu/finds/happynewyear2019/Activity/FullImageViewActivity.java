@@ -23,6 +23,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -41,6 +47,8 @@ public class FullImageViewActivity extends AppCompatActivity {
     ImageView saveimage, shareiamge;
     File file;
     private static final String TAG = "FullImageViewActivity";
+    private AdView mAdView;
+    private InterstitialAd interstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +56,15 @@ public class FullImageViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_full_view);
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
+
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+        interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        interstitialAd.loadAd(new AdRequest.Builder().build());
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         gifImageView = findViewById(R.id.fullviewimage);
@@ -86,16 +103,19 @@ public class FullImageViewActivity extends AppCompatActivity {
                 if (imageboolean == 2) {
                     Bitmap bitmap = null;
                     bitmap = ((BitmapDrawable) gifImageView.getDrawable()).getBitmap();
-                    file = new File(getExternalCacheDir(), String.valueOf(image) + ".png");
+                    file = new File(getExternalCacheDir(), String.valueOf(image) + ".jpeg");
                     try {
                         FileOutputStream fileOutputStream = new FileOutputStream(file);
-                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
                         fileOutputStream.flush();
                         fileOutputStream.close();
                         file.setReadable(true, true);
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+                        String sAux = "\nDownload the app for New Year Images, Gif, Wishes and Shayari\n\n";
+                        sAux = sAux + "https://play.google.com/store/apps/details?id="+getPackageName()+"";
+                        intent.putExtra(Intent.EXTRA_TEXT, sAux);
                         intent.setType("image/png");
                         startActivity(Intent.createChooser(intent, "Share Via"));
 
@@ -138,6 +158,9 @@ public class FullImageViewActivity extends AppCompatActivity {
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file1));
+                        String sAux = "\nDownload the app for New Year Images, Gif, Wishes and Shayari\n\n";
+                        sAux = sAux + "https://play.google.com/store/apps/details?id="+getPackageName()+"";
+                        intent.putExtra(Intent.EXTRA_TEXT, sAux);
                         intent.setType("image/gif");
                         startActivity(Intent.createChooser(intent, "Share Gif Via"));
 
@@ -271,6 +294,8 @@ public class FullImageViewActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        imageboolean=0;
+        gifboolean =0;
         try {
             File dir = getExternalCacheDir();
            boolean b = deleteDir(dir);
@@ -291,6 +316,21 @@ public class FullImageViewActivity extends AppCompatActivity {
             return dir.delete();
         } else {
             return false;
+        }
+    }
+    @Override
+    public void onBackPressed() {
+        if (interstitialAd.isLoaded()) {
+            interstitialAd.show();
+            interstitialAd.setAdListener(new AdListener() {
+                @Override
+                public void onAdClosed() {
+                    super.onAdClosed();
+                    finish();
+                }
+            });
+        } else {
+            super.onBackPressed();
         }
     }
 }
